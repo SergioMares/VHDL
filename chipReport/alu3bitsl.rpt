@@ -1,0 +1,187 @@
+
+
+                                                                      Page 1
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 04:20:31 2020
+
+
+
+--------------------------------------------------------------------------------
+
+Module                   : 'alu3bits'
+
+--------------------------------------------------------------------------------
+
+Input files:
+
+    ABEL PLA file        : alu3bitsl.tt3
+    Device library       : P22V10G.dev
+
+Output files:
+
+    Report file          : alu3bitsl.rpt
+    Programmer load file : alu3bitsl.jed
+
+--------------------------------------------------------------------------------
+
+
+                                                                      Page 2
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 04:20:31 2020
+
+P22V10G Programmed Logic:
+--------------------------------------------------------------------------------
+
+
+
+O_2_     = (  A_2_ & B_2_ & !sel_1_ 
+            #   A_2_ & B_2_ & sel_0_ 
+            #   !A_2_ & !B_2_ & sel_1_ & sel_0_ 
+            #   A_2_ & !sel_1_ & sel_0_ 
+            #   B_2_ & !sel_1_ & sel_0_ 
+            #   !A_2_ & B_2_ & sel_1_ & !sel_0_ 
+            #   A_2_ & !B_2_ & sel_1_ & !sel_0_ );
+O_2_.OE  = (  !sel_2_ );
+
+O_1_     = (  !sel_1_ & sel_0_ & A_1_ 
+            #   !sel_1_ & sel_0_ & B_1_ 
+            #   !sel_1_ & A_1_ & B_1_ 
+            #   sel_0_ & A_1_ & B_1_ 
+            #   sel_1_ & !sel_0_ & !A_1_ & B_1_ 
+            #   sel_1_ & !sel_0_ & A_1_ & !B_1_ 
+            #   sel_1_ & sel_0_ & !A_1_ & !B_1_ );
+O_1_.OE  = (  !sel_2_ );
+
+O_0_     = (  !sel_1_ & sel_0_ & A_0_ 
+            #   !sel_1_ & sel_0_ & B_0_ 
+            #   !sel_1_ & A_0_ & B_0_ 
+            #   sel_0_ & A_0_ & B_0_ 
+            #   sel_1_ & !sel_0_ & !A_0_ & B_0_ 
+            #   sel_1_ & !sel_0_ & A_0_ & !B_0_ 
+            #   sel_1_ & sel_0_ & !A_0_ & !B_0_ );
+O_0_.OE  = (  !sel_2_ );
+
+
+
+                                                                      Page 3
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 04:20:31 2020
+
+P22V10G Chip Diagram:
+--------------------------------------------------------------------------------
+
+
+
+
+                                   P22V10G
+
+                         +---------\       /---------+
+                         |          \     /          |
+                         |           -----           |
+                  sel_2_ |  1                    24  | Vcc                     
+                         |                           |
+                    A_2_ |  2                    23  | O_0_                    
+                         |                           |
+                    B_2_ |  3                    22  | O_2_                    
+                         |                           |
+                  sel_1_ |  4                    21  |                         
+                         |                           |
+                  sel_0_ |  5                    20  |                         
+                         |                           |
+                    A_1_ |  6                    19  |                         
+                         |                           |
+                    A_0_ |  7                    18  |                         
+                         |                           |
+                    B_1_ |  8                    17  |                         
+                         |                           |
+                    B_0_ |  9                    16  |                         
+                         |                           |
+                         | 10                    15  |                         
+                         |                           |
+                         | 11                    14  | O_1_                    
+                         |                           |
+                     GND | 12                    13  |                         
+                         |                           |
+                         |                           |
+                         `---------------------------'
+
+                        SIGNATURE: N/A
+
+
+                                                                      Page 4
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 04:20:31 2020
+
+P22V10G Resource Allocations:
+--------------------------------------------------------------------------------
+
+
+
+        Device        | Resource  |   Design    |
+       Resources      | Available | Requirement | Unused
+======================|===========|=============|==============
+                      |           |             |
+Input Pins:           |           |             |
+                      |           |             |
+          Input:      |     12    |      9      |    3 ( 25 %)
+                      |           |             |
+Output Pins:          |           |             |
+                      |           |             |
+          In/Out:     |     10    |      3      |    7 ( 70 %)
+          Output:     |      -    |      -      |    -
+                      |           |             |
+Buried Nodes:         |           |             |
+                      |           |             |
+          Input Reg:  |      -    |      -      |    -
+          Pin Reg:    |     10    |      0      |   10 (100 %)
+          Buried Reg: |      -    |      -      |    -
+
+
+                                                                      Page 5
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 04:20:31 2020
+
+P22V10G Product Terms Distribution:
+--------------------------------------------------------------------------------
+
+
+
+            Signal                       |    Pin   | Terms | Terms | Terms
+             Name                        | Assigned | Used  |  Max  | Unused
+=========================================|==========|=======|=======|=======
+O_2_                                     |   22     |   7   |  10   |   3
+O_1_                                     |   14     |   7   |   8   |   1
+O_0_                                     |   23     |   7   |   8   |   1
+
+
+     ==== List of Inputs/Feedbacks ====
+
+Signal Name                              | Pin      | Pin Type
+=========================================|==========|=========
+sel_2_                                   |    1     | CLK/IN
+A_2_                                     |    2     | INPUT
+B_2_                                     |    3     | INPUT
+sel_1_                                   |    4     | INPUT
+sel_0_                                   |    5     | INPUT
+A_1_                                     |    6     | INPUT
+A_0_                                     |    7     | INPUT
+B_1_                                     |    8     | INPUT
+B_0_                                     |    9     | INPUT
+
+
+                                                                      Page 6
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 04:20:31 2020
+
+P22V10G Unused Resources:
+--------------------------------------------------------------------------------
+
+
+
+ Pin   |  Pin   |   Product   | Flip-flop
+Number |  Type  |   Terms     |   Type
+=======|========|=============|==========
+   10  |  INPUT |      -      |    -   
+   11  |  INPUT |      -      |    -   
+   13  |  INPUT |      -      |    -   
+   15  |  BIDIR | NORMAL 10   |    D
+   16  |  BIDIR | NORMAL 12   |    D
+   17  |  BIDIR | NORMAL 14   |    D
+   18  |  BIDIR | NORMAL 16   |    D
+   19  |  BIDIR | NORMAL 16   |    D
+   20  |  BIDIR | NORMAL 14   |    D
+   21  |  BIDIR | NORMAL 12   |    D

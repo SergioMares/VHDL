@@ -1,0 +1,191 @@
+
+
+                                                                      Page 1
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 23:16:29 2020
+
+
+
+--------------------------------------------------------------------------------
+
+Module                   : 'contprog'
+
+--------------------------------------------------------------------------------
+
+Input files:
+
+    ABEL PLA file        : contprog.tt3
+    Device library       : P22V10G.dev
+
+Output files:
+
+    Report file          : contprog.rpt
+    Programmer load file : contprog.jed
+
+--------------------------------------------------------------------------------
+
+
+                                                                      Page 2
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 23:16:29 2020
+
+P22V10G Programmed Logic:
+--------------------------------------------------------------------------------
+
+
+
+addr_2_.D   = (  cntP_2_.Q ); " ISTYPE 'BUFFER'
+addr_2_.C   = (  clk );
+
+addr_3_.D   = (  cntP_3_.Q ); " ISTYPE 'BUFFER'
+addr_3_.C   = (  clk );
+
+cntP_0_.D   = (  !cntP_0_.Q ); " ISTYPE 'BUFFER'
+cntP_0_.C   = (  clk );
+
+cntP_1_.D   = (  !cntP_0_.Q & cntP_1_.Q 
+               #   cntP_0_.Q & !cntP_1_.Q ); " ISTYPE 'BUFFER'
+cntP_1_.C   = (  clk );
+
+cntP_2_.D   = (  !cntP_0_.Q & cntP_2_.Q 
+               #   !cntP_1_.Q & cntP_2_.Q 
+               #   cntP_0_.Q & cntP_1_.Q & !cntP_2_.Q ); " ISTYPE 'BUFFER'
+cntP_2_.C   = (  clk );
+
+cntP_3_.D   = (  !cntP_0_.Q & cntP_3_.Q 
+               #   !cntP_1_.Q & cntP_3_.Q 
+               #   !cntP_2_.Q & cntP_3_.Q 
+               #   cntP_0_.Q & cntP_1_.Q & cntP_2_.Q & !cntP_3_.Q );
+             " ISTYPE 'BUFFER'
+cntP_3_.C   = (  clk );
+
+addr_0_.D   = (  cntP_0_.Q ); " ISTYPE 'BUFFER'
+addr_0_.C   = (  clk );
+
+addr_1_.D   = (  cntP_1_.Q ); " ISTYPE 'BUFFER'
+addr_1_.C   = (  clk );
+
+
+
+                                                                      Page 3
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 23:16:29 2020
+
+P22V10G Chip Diagram:
+--------------------------------------------------------------------------------
+
+
+
+
+                                   P22V10G
+
+                         +---------\       /---------+
+                         |          \     /          |
+                         |           -----           |
+                     clk |  1                    24  | Vcc                     
+                         |                           |
+                         |  2                    23  | addr_1_                 
+                         |                           |
+                         |  3                    22  | cntP_3_                 
+                         |                           |
+                         |  4                    21  | cntP_1_                 
+                         |                           |
+                         |  5                    20  | addr_3_                 
+                         |                           |
+                         |  6                    19  |                         
+                         |                           |
+                         |  7                    18  |                         
+                         |                           |
+                         |  8                    17  | addr_2_                 
+                         |                           |
+                         |  9                    16  | cntP_0_                 
+                         |                           |
+                         | 10                    15  | cntP_2_                 
+                         |                           |
+                         | 11                    14  | addr_0_                 
+                         |                           |
+                     GND | 12                    13  |                         
+                         |                           |
+                         |                           |
+                         `---------------------------'
+
+                        SIGNATURE: N/A
+
+
+                                                                      Page 4
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 23:16:29 2020
+
+P22V10G Resource Allocations:
+--------------------------------------------------------------------------------
+
+
+
+        Device        | Resource  |   Design    |
+       Resources      | Available | Requirement | Unused
+======================|===========|=============|==============
+                      |           |             |
+Input Pins:           |           |             |
+                      |           |             |
+          Input:      |     12    |      1      |   11 ( 91 %)
+                      |           |             |
+Output Pins:          |           |             |
+                      |           |             |
+          In/Out:     |     10    |      8      |    2 ( 20 %)
+          Output:     |      -    |      -      |    -
+                      |           |             |
+Buried Nodes:         |           |             |
+                      |           |             |
+          Input Reg:  |      -    |      -      |    -
+          Pin Reg:    |     10    |      8      |    2 ( 20 %)
+          Buried Reg: |      -    |      -      |    -
+
+
+                                                                      Page 5
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 23:16:29 2020
+
+P22V10G Product Terms Distribution:
+--------------------------------------------------------------------------------
+
+
+
+            Signal                       |    Pin   | Terms | Terms | Terms
+             Name                        | Assigned | Used  |  Max  | Unused
+=========================================|==========|=======|=======|=======
+addr_2_.D                                |   17     |   1   |  14   |  13
+addr_3_.D                                |   20     |   1   |  14   |  13
+cntP_0_.D                                |   16     |   1   |  12   |  11
+cntP_1_.D                                |   21     |   2   |  12   |  10
+cntP_2_.D                                |   15     |   3   |  10   |   7
+cntP_3_.D                                |   22     |   4   |  10   |   6
+addr_0_.D                                |   14     |   1   |   8   |   7
+addr_1_.D                                |   23     |   1   |   8   |   7
+
+
+     ==== List of Inputs/Feedbacks ====
+
+Signal Name                              | Pin      | Pin Type
+=========================================|==========|=========
+clk                                      |    1     | CLK/IN
+
+
+                                                                      Page 6
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 23:16:29 2020
+
+P22V10G Unused Resources:
+--------------------------------------------------------------------------------
+
+
+
+ Pin   |  Pin   |   Product   | Flip-flop
+Number |  Type  |   Terms     |   Type
+=======|========|=============|==========
+    2  |  INPUT |      -      |    -   
+    3  |  INPUT |      -      |    -   
+    4  |  INPUT |      -      |    -   
+    5  |  INPUT |      -      |    -   
+    6  |  INPUT |      -      |    -   
+    7  |  INPUT |      -      |    -   
+    8  |  INPUT |      -      |    -   
+    9  |  INPUT |      -      |    -   
+   10  |  INPUT |      -      |    -   
+   11  |  INPUT |      -      |    -   
+   13  |  INPUT |      -      |    -   
+   18  |  BIDIR | NORMAL 16   |    D
+   19  |  BIDIR | NORMAL 16   |    D

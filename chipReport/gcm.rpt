@@ -1,0 +1,187 @@
+
+
+                                                                      Page 1
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 22:10:29 2020
+
+
+
+--------------------------------------------------------------------------------
+
+Module                   : 'gcm'
+
+--------------------------------------------------------------------------------
+
+Input files:
+
+    ABEL PLA file        : gcm.tt3
+    Device library       : P22V10G.dev
+
+Output files:
+
+    Report file          : gcm.rpt
+    Programmer load file : gcm.jed
+
+--------------------------------------------------------------------------------
+
+
+                                                                      Page 2
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 22:10:29 2020
+
+P22V10G Programmed Logic:
+--------------------------------------------------------------------------------
+
+
+
+ABCDE_4_     = (  !Qp_0_.Q & Qp_1_.Q & !Qp_2_.Q );
+
+ABCDE_3_     = (  !Qp_0_.Q & !Qp_1_.Q & !Qp_2_.Q & !Qp_3_.Q );
+
+ABCDE_2_     = (  !Qp_0_.Q & !Qp_1_.Q & Qp_2_.Q );
+
+ABCDE_1_     = (  !Qp_0_.Q & Qp_1_.Q & Qp_2_.Q );
+
+ABCDE_0_     = (  !Qp_0_.Q & !Qp_1_.Q & Qp_3_.Q );
+
+Qp_0_.D   = (  !Qp_0_.Q ); " ISTYPE 'BUFFER'
+Qp_0_.C   = (  clkin );
+
+Qp_1_.D   = (  !Qp_0_.Q & Qp_1_.Q 
+             #   Qp_0_.Q & !Qp_1_.Q ); " ISTYPE 'BUFFER'
+Qp_1_.C   = (  clkin );
+
+Qp_2_.D   = (  !Qp_0_.Q & Qp_2_.Q 
+             #   !Qp_1_.Q & Qp_2_.Q 
+             #   Qp_0_.Q & Qp_1_.Q & !Qp_2_.Q & !Qp_3_.Q ); " ISTYPE 'BUFFER'
+Qp_2_.C   = (  clkin );
+
+Qp_3_.D   = (  Qp_0_.Q & Qp_1_.Q & Qp_2_.Q 
+             #   !Qp_0_.Q & Qp_3_.Q 
+             #   !Qp_1_.Q & Qp_3_.Q ); " ISTYPE 'BUFFER'
+Qp_3_.C   = (  clkin );
+
+
+
+                                                                      Page 3
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 22:10:29 2020
+
+P22V10G Chip Diagram:
+--------------------------------------------------------------------------------
+
+
+
+
+                                   P22V10G
+
+                         +---------\       /---------+
+                         |          \     /          |
+                         |           -----           |
+                   clkin |  1                    24  | Vcc                     
+                         |                           |
+                         |  2                    23  | Qp_3_                   
+                         |                           |
+                         |  3                    22  | Qp_1_                   
+                         |                           |
+                         |  4                    21  | ABCDE_0_                
+                         |                           |
+                         |  5                    20  | ABCDE_2_                
+                         |                           |
+                         |  6                    19  | ABCDE_4_                
+                         |                           |
+                         |  7                    18  |                         
+                         |                           |
+                         |  8                    17  | ABCDE_3_                
+                         |                           |
+                         |  9                    16  | ABCDE_1_                
+                         |                           |
+                         | 10                    15  | Qp_0_                   
+                         |                           |
+                         | 11                    14  | Qp_2_                   
+                         |                           |
+                     GND | 12                    13  |                         
+                         |                           |
+                         |                           |
+                         `---------------------------'
+
+                        SIGNATURE: N/A
+
+
+                                                                      Page 4
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 22:10:29 2020
+
+P22V10G Resource Allocations:
+--------------------------------------------------------------------------------
+
+
+
+        Device        | Resource  |   Design    |
+       Resources      | Available | Requirement | Unused
+======================|===========|=============|==============
+                      |           |             |
+Input Pins:           |           |             |
+                      |           |             |
+          Input:      |     12    |      1      |   11 ( 91 %)
+                      |           |             |
+Output Pins:          |           |             |
+                      |           |             |
+          In/Out:     |     10    |      9      |    1 ( 10 %)
+          Output:     |      -    |      -      |    -
+                      |           |             |
+Buried Nodes:         |           |             |
+                      |           |             |
+          Input Reg:  |      -    |      -      |    -
+          Pin Reg:    |     10    |      4      |    6 ( 60 %)
+          Buried Reg: |      -    |      -      |    -
+
+
+                                                                      Page 5
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 22:10:29 2020
+
+P22V10G Product Terms Distribution:
+--------------------------------------------------------------------------------
+
+
+
+            Signal                       |    Pin   | Terms | Terms | Terms
+             Name                        | Assigned | Used  |  Max  | Unused
+=========================================|==========|=======|=======|=======
+ABCDE_4_                                 |   19     |   1   |  16   |  15
+ABCDE_3_                                 |   17     |   1   |  14   |  13
+ABCDE_2_                                 |   20     |   1   |  14   |  13
+ABCDE_1_                                 |   16     |   1   |  12   |  11
+ABCDE_0_                                 |   21     |   1   |  12   |  11
+Qp_0_.D                                  |   15     |   1   |  10   |   9
+Qp_1_.D                                  |   22     |   2   |  10   |   8
+Qp_2_.D                                  |   14     |   3   |   8   |   5
+Qp_3_.D                                  |   23     |   3   |   8   |   5
+
+
+     ==== List of Inputs/Feedbacks ====
+
+Signal Name                              | Pin      | Pin Type
+=========================================|==========|=========
+clkin                                    |    1     | CLK/IN
+
+
+                                                                      Page 6
+ispLEVER Classic 2.0.00.17.20.15  -  Device Utilization Chart         Sun May 24 22:10:29 2020
+
+P22V10G Unused Resources:
+--------------------------------------------------------------------------------
+
+
+
+ Pin   |  Pin   |   Product   | Flip-flop
+Number |  Type  |   Terms     |   Type
+=======|========|=============|==========
+    2  |  INPUT |      -      |    -   
+    3  |  INPUT |      -      |    -   
+    4  |  INPUT |      -      |    -   
+    5  |  INPUT |      -      |    -   
+    6  |  INPUT |      -      |    -   
+    7  |  INPUT |      -      |    -   
+    8  |  INPUT |      -      |    -   
+    9  |  INPUT |      -      |    -   
+   10  |  INPUT |      -      |    -   
+   11  |  INPUT |      -      |    -   
+   13  |  INPUT |      -      |    -   
+   18  |  BIDIR | NORMAL 16   |    D
